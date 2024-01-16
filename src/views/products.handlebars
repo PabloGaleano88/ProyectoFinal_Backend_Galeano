@@ -18,26 +18,26 @@
                     {{else}}
                     Usuario
                     {{/if}} |
-                    <a href="http://localhost:8080/api/logout">Cerrar Sesión </a>
+                    <a href="/api/logout">Cerrar Sesión </a>
                 </span>
             </svg>
         </div>
     </div>
     {{#if admin}}
     <div class="admin_products">
-        <a href="http://localhost:8080/realtimeproducts"><button type="button" class="btn btn-warning">Administrar
+        <a href="/realtimeproducts"><button type="button" class="btn btn-warning">Administrar
                 Productos</button></a>
     </div>
         <div class="adm_users">
-        <a href="http://localhost:8080/adminusers"><button type="button" class="btn btn-warning">Adm. Usuarios</button></a>
+        <a href="/adminusers"><button type="button" class="btn btn-warning">Adm. Usuarios</button></a>
     </div>
     {{else if premium}}
     <div class="admin_products">
-        <a href="http://localhost:8080/realtimeproducts"><button type="button" class="btn btn-warning">Administrar
+        <a href="/realtimeproducts"><button type="button" class="btn btn-warning">Administrar
                 Productos</button></a>
     </div>
     <div class="go_to_chat_premium">
-        <a href="http://localhost:8080/chat"><button type="button" class="btn btn-warning">
+        <a href="/chat"><button type="button" class="btn btn-warning">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chat"
                     viewBox="0 0 16 16">
                     <path
@@ -46,12 +46,12 @@
         </a>
     </div>
     <div class="go_to_cart">
-        <a href="http://localhost:8080/carts/{{cartId}}"><button type="button" class="btn btn-warning">Ir
+        <a href="/carts/{{cartId}}"><button type="button" class="btn btn-warning">Ir
                 a mi carrito</button></a>
     </div>
     {{else}}
     <div class="go_to_chat">
-        <a href="http://localhost:8080/chat"><button type="button" class="btn btn-warning">
+        <a href="/chat"><button type="button" class="btn btn-warning">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chat"
                     viewBox="0 0 16 16">
                     <path
@@ -60,7 +60,7 @@
         </a>
     </div>
     <div class="go_to_cart">
-        <a href="http://localhost:8080/carts/{{cartId}}"><button type="button" class="btn btn-warning">Ir
+        <a href="/carts/{{cartId}}"><button type="button" class="btn btn-warning">Ir
                 a mi carrito</button></a>
     </div>
     {{/if}}
