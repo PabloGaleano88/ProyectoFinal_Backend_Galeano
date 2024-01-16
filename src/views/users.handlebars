@@ -1,0 +1,39 @@
+<div class="nav_buttons">
+    <div class="go_back">
+        <a href="http://localhost:8080/products"><button type="button" class="btn btn-warning">Volver</button></a>
+    </div>
+</div>
+<div class="email_position">
+    <h6>
+        Administración de usuarios - Solo acceso de personal autorizado
+    </h6>
+</div>
+
+{{#each usersData}}
+<div class="card" style="width: 18rem;">
+    <div class="card-image">
+        {{#if this.profilePic}}
+        <img src={{this.profilePic}} class="rounded-circle" alt="...">
+        {{else}}
+        <img src='./static/profileImages/none.png' class="rounded-circle" alt="...">
+        {{/if}}
+    </div>
+    <div class="card-body">
+        <h5 class="card-title">{{this.name}}</h5>
+        <p class="card-text">{{this.email}}</p>
+        <p class="card-text">Rol: {{this.role}}</p>
+        <p class="card-text">user ID:</p>
+        <p>{{this.id}}</p>
+        <p class="card-text"><small class="text-body-secondary">Última conexión: {{this.last_connection}}</small></p>
+    </div>
+    <div class="card_buttons" id="card_buttons">
+        <a href="#" class="btn btn-warning role" data-user-id="{{this.id}}">Cambiar rol</a>
+        <a href="#" class="btn btn-warning delete" data-user-id="{{this.id}}">Borrar usuario</a>
+    </div>
+</div>
+{{/each}}
+
+<footer>
+</footer>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="/static/js/users.js"></script>
