@@ -29,7 +29,9 @@ const app = express()
 
 app.use(errors)
 
-const httpServer = app.listen(8080, () => logger.info("Servicio corriendo en el puerto 8080"))
+const PORT = process.env.PORT || 8080
+
+const httpServer = app.listen(PORT, () => logger.info("Servicio corriendo en el puerto 8080"))
 const socketServer = new Server(httpServer)
 
 mongoose.connect(process.env.MONGODB_PATH)
