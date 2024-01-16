@@ -55,7 +55,7 @@ export const resetPasswordMail = async (userEmail) => {
             html:
                 `<div>
             <h1>E-mail de recuperación de contraseña</h1>
-            <h2>Ingresa al siguiente Link para recuperar tu password: <a href="http://localhost:8080/changepassword/${recover._id}">Resetear Password</a> </h2>
+            <h2>Ingresa al siguiente Link para recuperar tu password: <a href="https://proyectofinalbackendgaleano-production.up.railway.app/changepassword/${recover._id}">Resetear Password</a> </h2>
             <div>
             <h3>Si tu no has pedido recuperar tu contraseña ignora este e-mail</h3>
             </div>

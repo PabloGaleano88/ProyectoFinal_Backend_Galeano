@@ -56,7 +56,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 }).then(async (result) => {
                     if (result.isConfirmed) {
                         try {
-                            await fetch('http://localhost:8080/api/passresetreq', {
+                            await fetch('/api/passresetreq', {
                                 method: 'POST',
                                 headers: {
                                     'Content-Type': 'application/json',

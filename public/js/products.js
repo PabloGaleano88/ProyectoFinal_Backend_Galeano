@@ -4,7 +4,7 @@ document.getElementById('contenido').addEventListener('click', async function (e
         const productId = event.target.getAttribute('data-productid');
         const cartId = event.target.getAttribute('data-cartid');
         try {
-            const response = await fetch(`http://localhost:8080/api/carts/${cartId}/products/${productId}`, {
+            const response = await fetch(`/api/carts/${cartId}/products/${productId}`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

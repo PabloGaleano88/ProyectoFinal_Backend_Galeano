@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', function () {
             }).then(async (result) => {
                 if (result.isConfirmed) {
                     try {
-                        const response = await fetch(`http://localhost:8080/api/users/premium/${userId}`, {
+                        const response = await fetch(`/api/users/premium/${userId}`, {
                             method: 'PUT',
                             headers: {
                                 'Content-Type': 'application/json',
@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', function () {
                                 text: "El rol de usuario a cambiado",
                                 icon: "success"
                             }).then(() => {
-                                window.location.href = "http://localhost:8080/adminusers"})
+                                window.location.href = "/adminusers"})
                         }
                         else if(response.status === 403) {
                             Swal.fire({
@@ -75,7 +75,7 @@ document.querySelectorAll('.delete').forEach(function (button) {
         }).then(async (result) => {
             if (result.isConfirmed) {
                 try {
-                    const response = await fetch(`http://localhost:8080/api/users/${userId}`, {
+                    const response = await fetch(`/api/users/${userId}`, {
                         method: 'DELETE',
                         headers: {
                             'Content-Type': 'application/json',
@@ -87,7 +87,7 @@ document.querySelectorAll('.delete').forEach(function (button) {
                             text: "El usuario ha sido eliminado",
                             icon: "success"
                         }).then(() => {
-                            window.location.href = "http://localhost:8080/adminusers"})
+                            window.location.href = "/adminusers"})
                     }
                     else if(response.status === 403) {
                         Swal.fire({

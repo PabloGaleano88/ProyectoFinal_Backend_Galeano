@@ -7,7 +7,7 @@ document.getElementById('contenido').addEventListener('click', async function (e
         if (quantity > 1) {
             quantity = parseInt(quantity) - 1;
             try {
-                const response = await fetch(`http://localhost:8080/api/carts/${cartId}/products/${productId}`, {
+                const response = await fetch(`/api/carts/${cartId}/products/${productId}`, {
                     method: 'PUT',
                     headers: {
                         'Content-Type': 'application/json',
@@ -34,7 +34,7 @@ document.getElementById('contenido').addEventListener('click', async function (e
         let quantity = event.target.getAttribute('current-quantity');
         quantity = parseInt(quantity) + 1;
         try {
-            const response = await fetch(`http://localhost:8080/api/carts/${cartId}/products/${productId}`, {
+            const response = await fetch(`/api/carts/${cartId}/products/${productId}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
@@ -59,7 +59,7 @@ document.getElementById('contenido').addEventListener('click', async function (e
         const productId = deleteButton.getAttribute('data-productid');
         const cartId = deleteButton.getAttribute('data-cartid');
         try {
-            const response = await fetch(`http://localhost:8080/api/carts/${cartId}/products/${productId}`, {
+            const response = await fetch(`/api/carts/${cartId}/products/${productId}`, {
                 method: 'DELETE',
                 headers: {
                     'Content-Type': 'application/json',
@@ -100,7 +100,7 @@ document.getElementById('purchase-button').addEventListener('click', async funct
     }).then(async (result) => {
         if (result.isConfirmed) {
             try {
-                const purchaseResponse = await fetch(`http://localhost:8080/api/carts/cartId/purchase`)
+                const purchaseResponse = await fetch(`/api/carts/cartId/purchase`)
             }
             catch (error) {
                 swalWithBootstrapButtons.fire({

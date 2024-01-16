@@ -24,7 +24,7 @@ export const jwtLogin = async (req, res) => {
     res.cookie(process.env.COOKIE_TOKEN, token, {
         maxAge : 1000000,
         httpOnly: true,
-    }).send(`estas logeado, prueba ingresando a http://localhost:8080/api/session/current para ver la información de tu token en las cookies`)
+    }).send(`estas logeado, prueba ingresando a https://proyectofinalbackendgaleano-production.up.railway.app//api/session/current para ver la información de tu token en las cookies`)
 
 }
 
