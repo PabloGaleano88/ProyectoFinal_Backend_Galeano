@@ -1,6 +1,6 @@
 <div class="login_form">
     <div class="border_form">
-        <form id="log_in_form" action="http://localhost:8080/api/login" method="post">
+        <form id="log_in_form" action="/api/login" method="post">
             <h1 class="h3 mb-3 fw-normal">Log in</h1>
             <div class="form-floating">
                 <input type="email" name="email" class="form-control" placeholder="E-mail">
@@ -16,10 +16,10 @@
                 <a id="forgot-password" class="link" href="">Olvidé mi contraseña</a>
             </div>
             <div>
-                <input type="radio" name="frmact" value="http://localhost:8080/api/login" checked="checked"
+                <input type="radio" name="frmact" value="/api/login" checked="checked"
                     id="session-radio" /><label class="radiobutton_name" for="session_local">Session</label>
             </div>
-            <input type="radio" name="frmact" value="http://localhost:8080/api/session/login" id="jwt-radio" /><label
+            <input type="radio" name="frmact" value="/api/session/login" id="jwt-radio" /><label
                 class="radiobutton_name" for="JWT">JWT</label>
             <button class="btn btn-primary btn-warning w-100 py-2" type="submit"><svg class="passport_logo" role="img"
                     viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
