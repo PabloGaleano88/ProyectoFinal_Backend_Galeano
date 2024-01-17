@@ -104,7 +104,9 @@ export const purchase = async (req, res) => {
             let amountTotal = 0
             let quantityTotal = 0
 
-            for (const producto of cart.products) {
+            for (const producto of cart.products){
+                const productFoundInMarket = productsOnMarket.some((product) => product.productId._id ===producto.productId._id)
+                console.log(productFoundInMarket)
                 if (producto.quantity <= producto.productId.stock) {
                     await cartManager.removeProductFromCart(cid, producto.productId._id)
                     const newstock = producto.productId.stock - producto.quantity

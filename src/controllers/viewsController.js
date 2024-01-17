@@ -21,7 +21,7 @@ export const getProductsJson = async (req, res) => {
 
 export const getProducts = async (req, res) => {
     const { limit, page, sort, query } = req.query
-    const { first_name, last_name, email, age, cartId, admin , role } = req.session
+    const { first_name, last_name, email, age, cartId, admin, role } = req.session
     const premium = role === "premium"
     const result = await productManager.getAll(query, limit, page, sort)
     if (!page) {
@@ -52,18 +52,16 @@ export const login = (req, res) => {
 
 export const findCart = async (req, res) => {
     const cid = req.params.cid
-    const cartById = await cartManager.findCartById(cid)
-    const productsOnCart = cartById[0].products
+    const cartById = await cartManager.removeNullProductsFromCart(cid) //si el admin o el usuario borra un producto que tengo en el cart evita el error
+    const productsOnCart = cartById.products
     const session_data = req.session
     let amountTotal = 0
     let quantityTotal = 0
     if (req.session.isLogged) {
-        const cid = req.session.cartId
-        const userEmail = req.session.email
         productsOnCart.forEach(producto => {
             quantityTotal += producto.quantity
             amountTotal += producto.quantity * producto.productId.price
-        });
+        })
         amountTotal = amountTotal.toFixed(2)
     }
     else (
@@ -71,25 +69,25 @@ export const findCart = async (req, res) => {
     )
     res.render('carts', { productsOnCart, cid, session_data, quantityTotal, amountTotal, style: 'carts.css' })
 }
-    
+
 export const loggerTest = (req, res) => {
-        logger.silly("Logger Test: Silly")
-        logger.debug("Logger Test: Debug")
-        logger.verbose("Logger Test: Verbose")
-        logger.http("Logger Test: Http")
-        logger.info("Logger Test: Info")
-        logger.warn("Logger Test: Warning")
-        logger.error("Logger Test: Error")
-        res.send("Probando Logger, Mire la consola")
+    logger.silly("Logger Test: Silly")
+    logger.debug("Logger Test: Debug")
+    logger.verbose("Logger Test: Verbose")
+    logger.http("Logger Test: Http")
+    logger.info("Logger Test: Info")
+    logger.warn("Logger Test: Warning")
+    logger.error("Logger Test: Error")
+    res.send("Probando Logger, Mire la consola")
 }
 
-export const changePassword = (req,res) => {
+export const changePassword = (req, res) => {
     const rid = req.params.rid
-    res.render('changePassword',{style: 'changepassword.css',rid})
+    res.render('changePassword', { style: 'changepassword.css', rid })
 }
 
-export const users = async (req,res) => {
+export const users = async (req, res) => {
     const users = await sessionRepository.getUsers()
     const usersData = users.map(user => usersViewDTO(user))
-    res.render('users',{ style: 'users.css', usersData})
+    res.render('users', { style: 'users.css', usersData })
 }

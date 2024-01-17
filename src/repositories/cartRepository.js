@@ -78,6 +78,7 @@ class CartRepository {
         try {
             await productsModel.findById(productId)
             const cart = await cartsModel.findById(cartId)
+            console.log(cart)
             const products = cart.products.filter((p) => !p.productId.equals(productId))
             cart.products = products
             await cart.save()
@@ -99,6 +100,20 @@ class CartRepository {
             return ("Ocurrió un error al intentar vaciar el carrito", e)
         }
     }
+
+    async removeNullProductsFromCart(cid){
+        try {
+            const cart = await cartsModel.find({_id: cid}).lean()
+            const updatedProducts = cart[0].products.filter((p) => p.productId !== null)
+            await cartsModel.updateOne({ _id: cid }, { products: updatedProducts })
+            cart[0].products = updatedProducts
+            return cart[0]
+        }
+        catch (e) {
+            return (`Ocurrió un error al intentar eliminar el producto del carrito, revisa el ID del carrito y/o producto\n${e.name}\n${e.message}`)
+        }
+    }
+    
 
     async updateProducts(cartId, productsUpdate) {
         try {

@@ -4,7 +4,7 @@ import TicketRepository from "../../repositories/ticketRepository.js"
 
 const cartRepository = new CartRepository
 const ticketRepository = new TicketRepository
-const productRepository = new ProductRepository
+
 class CartManager {
     async addCart(){
         return await cartRepository.addCart()
@@ -24,6 +24,10 @@ class CartManager {
 
     async removeProductFromCart(cartId, productId){
         return await cartRepository.removeProductFromCart(cartId, productId)
+    }
+
+    async removeNullProductsFromCart(cartId){
+        return await cartRepository.removeNullProductsFromCart(cartId)
     }
 
     async removeAllProductsFromCart(cartId){

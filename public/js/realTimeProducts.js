@@ -69,7 +69,6 @@ document.getElementById("add_product").addEventListener("submit", async function
             text: `Hubo un error al agregar el producto.`,
         })
     }
-    console.log("por hacer el reset")
     event.target.reset();
 
 });
