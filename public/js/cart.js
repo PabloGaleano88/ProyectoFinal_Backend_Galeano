@@ -100,7 +100,7 @@ document.getElementById('purchase-button').addEventListener('click', async funct
     }).then(async (result) => {
         if (result.isConfirmed) {
             try {
-                const purchaseResponse = await fetch(`/api/carts/cartId/purchase`)
+                const purchaseResponse = await fetch(`/api/carts/${cartId}/purchase`)
             }
             catch (error) {
                 swalWithBootstrapButtons.fire({
