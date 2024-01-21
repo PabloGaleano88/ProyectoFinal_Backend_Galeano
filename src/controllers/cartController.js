@@ -104,9 +104,7 @@ export const purchase = async (req, res) => {
             let amountTotal = 0
             let quantityTotal = 0
 
-            for (const producto of cart.products){
-                const productFoundInMarket = productsOnMarket.some((product) => product.productId._id ===producto.productId._id)
-                console.log(productFoundInMarket)
+            for (const producto of cart.products) {
                 if (producto.quantity <= producto.productId.stock) {
                     await cartManager.removeProductFromCart(cid, producto.productId._id)
                     const newstock = producto.productId.stock - producto.quantity
@@ -118,7 +116,7 @@ export const purchase = async (req, res) => {
             amountTotal = amountTotal.toFixed(2)
             const autoCode = userEmail.substring(0, 3) + Math.floor(Math.random() * 1000 + 1)
             await cartManager.createTicket(autoCode, amountTotal, userEmail)
-            purchaseMail(userEmail, autoCode, amountTotal)
+            sendMail(userEmail, autoCode, amountTotal)
             res.status(200).send("ok")
         }
         else {
