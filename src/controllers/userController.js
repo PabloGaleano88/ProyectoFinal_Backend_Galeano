@@ -71,16 +71,17 @@ export const passReset = async (req, res) => {
         const { password } = req.body
         const recover = await recoverModel.findOne({ _id: recoverId })
         const user = await sessionRepository.findUserById(recover.userId)
+        const actualDate = new Date()
         if (bcrypt.compareSync(password, user.password)) {
-            res.redirect('/changepasserror')
-
+            res.redirect('/changepasserror',{ style: 'changepasserror.css' })
         }
         if (recover.expired_at.getTime() <= actualDate.getTime()) {
-            res.redirect('/changepasserror')
+            res.redirect('/changepasserror',{ style: 'changepasserror.css' })
         }
-
-        await sessionRepository.updatePassword(recover.userId, password)
-        res.redirect('/login')
+        else{
+            await sessionRepository.updatePassword(recover.userId, password)
+            res.redirect('/login')
+        }
     }
     catch (error) {
         throw error
