@@ -40,7 +40,7 @@ rtRouter.get('/failregister', (req, res) => {
 })
 
 rtRouter.get('/changepasserror', (req, res) => {
-    res.render('changepasserror')
+    res.render('changepasserror',{ style: 'changepasserror.css' })
 })
 
 rtRouter.get('/tokenexpired', (req, res) => {
