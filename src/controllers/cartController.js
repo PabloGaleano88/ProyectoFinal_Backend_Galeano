@@ -1,6 +1,7 @@
 import CartManager from "../dao/MongoDB/CartManager.js";
 import ProductManager from "../dao/MongoDB/ProductManager.js";
 import { purchaseMail } from "../services/mailService.js";
+import { logger } from "../utils/logger.js";
 
 
 const cartManager = new CartManager
@@ -110,17 +111,17 @@ export const purchase = async (req, res) => {
                     const newstock = producto.productId.stock - producto.quantity
                     quantityTotal += producto.quantity
                     amountTotal += producto.quantity * producto.productId.price
-                    await productManager.updateProduct(producto.productId._id, "stock", newstock)
+                    await productManager.updateProduct(producto.productId._id, {stock: newstock})
                 }
             };
             amountTotal = amountTotal.toFixed(2)
             const autoCode = userEmail.substring(0, 3) + Math.floor(Math.random() * 1000 + 1)
             await cartManager.createTicket(autoCode, amountTotal, userEmail)
-            sendMail(userEmail, autoCode, amountTotal)
+            purchaseMail(userEmail, autoCode, amountTotal)
             res.status(200).send("ok")
         }
         else {
-            loggger.info("El usuario no inició sesión")
+            logger.info("El usuario no inició sesión")
 
         }
     }

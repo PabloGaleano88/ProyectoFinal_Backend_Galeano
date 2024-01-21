@@ -21,17 +21,17 @@ export const purchaseMail = async (userEmail, autoCode, amountTotal) => {
             to: userEmail,
             subject: 'e-Commecer Coder comprobante de compra',
             html:
-                `<div>
-            <h1>Gracias por tu compra!</h1>
-            <h2> A continuación verás los detalles de tu compra:</h2>
-            <div>
-            <h3>Código de compra: ${autoCode}</h3>
-            <h3>Total de la compra: U$D ${amountTotal}</h3>
-            <h3>Comprador: ${userEmail}</h3>
-            
+                `
+                <div style="max-width: 600px; margin: 0 auto; font-family: 'Arial', sans-serif; background-color: #f4f4f4; padding: 20px; border-radius: 8px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);">
+                <h1 style="font-size: 24px; margin-bottom: 10px; color: #333;">¡Gracias por tu compra!</h1>
+                <h2 style="font-size: 20px; margin-bottom: 15px; color: #333;">A continuación verás los detalles de tu compra:</h2>
+                <div>
+                    <h3 style="font-size: 18px; margin-bottom: 8px; color: #333;">Código de compra: ${autoCode}</h3>
+                    <h3 style="font-size: 18px; margin-bottom: 8px; color: #333;">Total de la compra: U$D ${amountTotal}</h3>
+                    <h3 style="font-size: 18px; margin-bottom: 8px; color: #333;">Comprador: ${userEmail}</h3>
+                </div>
             </div>
-            </div>
-            `
+        `
         })
     }
     catch (error) {

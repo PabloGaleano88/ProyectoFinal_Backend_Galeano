@@ -78,7 +78,6 @@ class CartRepository {
         try {
             await productsModel.findById(productId)
             const cart = await cartsModel.findById(cartId)
-            console.log(cart)
             const products = cart.products.filter((p) => !p.productId.equals(productId))
             cart.products = products
             await cart.save()

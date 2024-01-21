@@ -82,6 +82,7 @@ document.getElementById('contenido').addEventListener('click', async function (e
 document.getElementById('purchase-button').addEventListener('click', async function (event) {
     const total = event.target.getAttribute('data-total');
     const cartId = event.target.getAttribute('data-cart');
+
     const swalWithBootstrapButtons = Swal.mixin({
         customClass: {
             confirmButton: "btn btn-success",
