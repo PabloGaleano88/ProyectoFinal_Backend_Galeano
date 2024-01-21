@@ -92,3 +92,29 @@ export const deleteProductMail = async (userEmail, deleter, product) => {
         throw error
     }
 }
+
+export const delInactiveUsersMail = async (userEmail, days, hours, mins) => {
+    try {
+        const actualDate = new Date()
+        const productName = product.title
+        await mailTransport.sendMail({
+            from: `e-Commerce CoderHouse <${process.env.MAIL_ADDRESS}>`,
+            to: userEmail,
+            subject: 'Se ha eliminado su usuario por inactividad ',
+            html:
+                `
+                <div style="max-width: 600px; margin: 0 auto; font-family: 'Arial', sans-serif; background-color: #f4f4f4; padding: 20px; border-radius: 8px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);">
+                <h1 style="font-size: 24px; margin-bottom: 10px; color: #333;">¡Aviso de Eliminación de Usuario!</h1>
+                <p style="font-size: 16px; color: #333;">Estimado/a ${userEmail},</p>
+                <p style="font-size: 16px; color: #333;">Lamentamos informarle que su cuenta ha sido eliminada debido a inactividad.</p>
+                <p style="font-size: 16px; color: #333;">Su usuario estuvo inactivo por ${days} días, ${hours} horas y ${mins} minutos.</p>
+                <p style="font-size: 16px; color: #333;">Si tiene alguna pregunta o desea reactivar su cuenta, por favor contáctenos.</p>
+                <p style="font-size: 16px; color: #333;">Gracias por ser parte de nuestro e-Commerce.</p>
+            </div>
+            `
+        })
+    }
+    catch (error) {
+        throw error
+    }
+}

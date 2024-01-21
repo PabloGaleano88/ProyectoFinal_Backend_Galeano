@@ -2,7 +2,7 @@ import multer from "multer"
 import { recoverModel } from "../dao/MongoDB/models/recoverModel.js"
 import SessionRepository from "../repositories/sessionRepository.js"
 import CartManager from "../dao/MongoDB/CartManager.js"
-import { resetPasswordMail } from "../services/mailService.js"
+import { resetPasswordMail, delInactiveUsersMail } from "../services/mailService.js"
 import bcrypt from 'bcrypt'
 
 import { usersDTO } from "../dao/usersDTO.js"
@@ -208,8 +208,8 @@ export const delInactiveUsers = async (req, res) => {
             const hours = (days % 1) * 24
             const entireHours = Math.floor(hours)
             const mins = Math.floor((hours % 1) * 60)
-            if (days => 2) {
-                console.log(`El usuario: ${user.email} ha estado inactivo por: ${entireDays} días ${entireHours} horas ${mins} minutos, `)
+            if (entireDays >= 2) {
+                delInactiveUsersMail(user.email,entireDays,entireHours,mins)
             }
         })
         res.status(200).send("usuarios borrados")
