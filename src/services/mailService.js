@@ -53,12 +53,12 @@ export const resetPasswordMail = async (userEmail) => {
             to: userEmail,
             subject: 'Recuperar contraseña',
             html:
-                `<div>
-            <h1>E-mail de recuperación de contraseña</h1>
-            <h2>Ingresa al siguiente Link para recuperar tu password: <a href="https://proyectofinalbackendgaleano-production.up.railway.app/changepassword/${recover._id}">Resetear Password</a> </h2>
-            <div>
-            <h3>Si tu no has pedido recuperar tu contraseña ignora este e-mail</h3>
-            </div>
+                ` <div style="max-width: 600px; margin: 0 auto; font-family: 'Arial', sans-serif; background-color: #f4f4f4; padding: 20px; border-radius: 8px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);">
+                <h1 style="font-size: 24px; margin-bottom: 10px; color: #333;">E-mail de recuperación de contraseña</h1>
+                <h2 style="font-size: 20px; margin-bottom: 15px; color: #333;">Ingresa al siguiente Link para recuperar tu password: <a href="https://proyectofinalbackendgaleano-production.up.railway.app/changepassword/${recover._id}" style="color: #007BFF; text-decoration: none;">Resetear Password</a></h2>
+                <div>
+                    <h3 style="font-size: 18px; margin-bottom: 8px; color: #333;">Si no has solicitado recuperar tu contraseña, ignora este e-mail.</h3>
+                </div>
             </div>
             `
         })
@@ -77,13 +77,13 @@ export const deleteProductMail = async (userEmail, deleter, product) => {
             to: userEmail,
             subject: 'Se ha eliminado un producto ',
             html:
-                `<div>
-            <h1>Le informamos que se elimino un producto que usted agregó</h1>
-            <h2>Producto eliminado: ${productName}</h2>
-            <div>
-            <h3>El producto ha sido eliminado por: ${deleter}</h3>
-            </div>
-            <p>${actualDate}</p>
+                ` <div style="max-width: 600px; margin: 0 auto; font-family: 'Arial', sans-serif; background-color: #f4f4f4; padding: 20px; border-radius: 8px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);">
+                <h1 style="font-size: 24px; margin-bottom: 10px; color: #333;">Le informamos que se eliminó un producto que usted agregó</h1>
+                <h2 style="font-size: 20px; margin-bottom: 15px; color: #333;">Producto eliminado: ${productName}</h2>
+                <div>
+                    <h3 style="font-size: 18px; margin-bottom: 8px; color: #333;">El producto ha sido eliminado por: ${deleter}</h3>
+                </div>
+                <p style="font-size: 14px; color: #555;">Fecha y hora de eliminación: ${actualDate}</p>
             </div>
             `
         })
