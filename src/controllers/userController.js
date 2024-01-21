@@ -84,7 +84,6 @@ export const passReset = async (req, res) => {
     }
 }
 
-//el cambio de rol se hace con thunderclient
 export const changeRole = async (req, res) => {
     const uid = req.params.uid
     try {
