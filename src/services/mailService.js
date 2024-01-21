@@ -95,8 +95,6 @@ export const deleteProductMail = async (userEmail, deleter, product) => {
 
 export const delInactiveUsersMail = async (userEmail, days, hours, mins) => {
     try {
-        const actualDate = new Date()
-        const productName = product.title
         await mailTransport.sendMail({
             from: `e-Commerce CoderHouse <${process.env.MAIL_ADDRESS}>`,
             to: userEmail,

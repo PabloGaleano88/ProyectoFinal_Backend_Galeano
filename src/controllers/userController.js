@@ -109,7 +109,7 @@ export const changeRole = async (req, res) => {
         }
         else if (user.role === 'admin') {
             res.status(405).send("No se puede cambiar el rol de un admin")
-            }
+        }
         else {
             res.status(403).send(`El usuario no ha terminado de procesar su documentación. Rol actual del usuario:${user.role}`)
         }
@@ -178,20 +178,20 @@ export const getUsers = async (req, res) => {
     }
 }
 
-export const deleteUser = async (req,res)=>{
+export const deleteUser = async (req, res) => {
     const uid = req.params.uid
-    try{
-    const user = await sessionRepository.findUserById(uid)
-    if(user.role === "admin"){
-        res.status(403).send("No es posible eliminar administradores")    
-    }
-    else{
-        const response = await sessionRepository.deleteUser(uid)
-        const cart = await cartManager.removeCart(user.cartId)
-        res.status(200).send(response)
+    try {
+        const user = await sessionRepository.findUserById(uid)
+        if (user.role === "admin") {
+            res.status(403).send("No es posible eliminar administradores")
+        }
+        else {
+            const response = await sessionRepository.deleteUser(uid)
+            const cart = await cartManager.removeCart(user.cartId)
+            res.status(200).send(response)
         }
     }
-    catch(error){
+    catch (error) {
         throw error
     }
 
@@ -201,20 +201,24 @@ export const delInactiveUsers = async (req, res) => {
     try {
         const currentDate = new Date()
         const users = await sessionRepository.getUsers()
-        users.map(user => {
+
+        for (const user of users) {
             const diff = currentDate - user.last_connection
             const days = diff / (1000 * 60 * 60 * 24)
             const entireDays = Math.floor(days)
             const hours = (days % 1) * 24
             const entireHours = Math.floor(hours)
             const mins = Math.floor((hours % 1) * 60)
-            if (entireDays >= 2) {
-                delInactiveUsersMail(user.email,entireDays,entireHours,mins)
+
+            if (entireDays >= 2 && user.role !== "admin") {
+                await sessionRepository.deleteUser(user._id)
+                await cartManager.removeCart(user.cartId)
+                await delInactiveUsersMail(user.email, entireDays, entireHours, mins)
             }
-        })
+        }
+
         res.status(200).send("usuarios borrados")
-    }
-    catch (error) {
+    } catch (error) {
         throw error
     }
 }
