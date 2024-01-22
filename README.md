@@ -1,29 +1,14 @@
-# Desafio de la clase 44 - Practica de Integración
+# Entrega Proyecto Final - Backend
 ### Alumno: Pablo Galeano
 
 ### Profesor: Gonzalo Fernández
 
 ### Tutor: Martín Castagno
 
-[![HTML 5](https://img.shields.io/badge/HTML_5-e34c26?style=for-the-badge&logo=html5&logoColor=white&labelColor=101010)]() [![CSS 3](https://img.shields.io/badge/CSS_3-264de4?style=for-the-badge&logo=css3&logoColor=white&labelColor=101010)]()[![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=white&labelColor=101010)]()[![MongoDB](https://img.shields.io/badge/MongoDB-47A248?style=for-the-badge&logo=mongodb&logoColor=white&labelColor=101010)]()[![MongoDB](https://img.shields.io/badge/handlebars-F26726?style=for-the-badge&logo=handlebars.js&logoColor=white&labelColor=101010)]()[![Passport](https://img.shields.io/badge/passport-34E27A?style=for-the-badge&logo=passport&logoColor=white&labelColor=101010)]()[![JSON WEB TOKEKS](https://img.shields.io/badge/JWT-f072ac?style=for-the-badge&logo=jsonwebtokens&logoColor=white&labelColor=101010)]()
+[![HTML 5](https://img.shields.io/badge/HTML_5-e34c26?style=for-the-badge&logo=html5&logoColor=white&labelColor=101010)]() [![CSS 3](https://img.shields.io/badge/CSS_3-264de4?style=for-the-badge&logo=css3&logoColor=white&labelColor=101010)]()[![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=white&labelColor=101010)]()[![MongoDB](https://img.shields.io/badge/MongoDB-47A248?style=for-the-badge&logo=mongodb&logoColor=white&labelColor=101010)]()[![MongoDB](https://img.shields.io/badge/handlebars-F26726?style=for-the-badge&logo=handlebars.js&logoColor=white&labelColor=101010)]()[![Passport](https://img.shields.io/badge/passport-34E27A?style=for-the-badge&logo=passport&logoColor=white&labelColor=101010)]()[![JSON WEB TOKEKS](https://img.shields.io/badge/JWT-f072ac?style=for-the-badge&logo=jsonwebtokens&logoColor=white&labelColor=101010)]()[![Railway](https://img.shields.io/badge/railway-490648?style=for-the-badge&logo=railway&logoColor=white&labelColor=101010)]()
 
-##
-
-#### What's New
-
-* Se modificó el modelo de User para agregar la propiedad "Documents" y "last_connection"
-
-* Se modificó el middleware de Multer para que discrimine entre los distintos archivos que el usuario puede subir.
-
-* Se agregó el endpoint /appi/users/:uid/documents
-
-* El usuario no puede ser premium si no antes haber subido los 3 documentos solicitados.
-
-* Se hicieron los test propuestos(Utilizar Thunder Client).
-
-* ir al final de este documento para ver como realizar la prueba
 ------------------------------------------------------
-#### Bibliotecas
+#### Bibliotecas utilizadas
 
 * Se debe realizar las siguientes instalaciones en caso de no disponer de las mismas en el equipo
 
@@ -139,13 +124,22 @@ npm run dev
 npm start
 ```
 
+---
+### Corriendo en Railway
+
+[https://proyectofinalbackendgaleano-production.up.railway.app/login/](https://proyectofinalbackendgaleano-production.up.railway.app/login)
+
+El proceso de logeo se puede realizar tanto desde Github como de forma local.
+---
+### Corriendo en localhost
+
 Se esuchará por el puerto 8080, con lo cual se puede interactuar con la app a traves de los siguientes endpoints:
+
+[http://localhost:8080/login/](http://localhost:8080/login)
 
 [http://localhost:8080/mockingproducts/](http://localhost:8080/mockingproducts)
 
 [http://localhost:8080/products/](http://localhost:8080/products) -> Si ingresa a acá pedirá Login
-
-[http://localhost:8080/login/](http://localhost:8080/login)
 
 [http://localhost:8080/signup/](http://localhost:8080/signup)
 
@@ -162,9 +156,7 @@ Se esuchará por el puerto 8080, con lo cual se puede interactuar con la app a t
 
 Tener en cuenta que para probar con el formulario en realtimeproducts se deben llenar todos los campos
 
-Los puts,update y delete tambien se pueden hacer con ThunderClient. Los POST no debido a que no deja enviar files desde el modo form-encoded, por lo tanto, multer no recibe la imagen y nos arroja error.
-
-##
+---
 
 ### Realizar Test
 
